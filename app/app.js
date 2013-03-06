@@ -3,35 +3,11 @@ require('./env');
 /* Express quick setup */
 var express = require('express')
   ,app = express()
-  ,everyauth = require('everyauth')
+  ,everyauth = require('./lib/everyauth')
   ,exphbs  = require('express3-handlebars')
   ,server = require('http').createServer(app)
   ,port = process.env.PORT || 8080
   ;
-
-//Need to set up the everyauth.shopify here, since it will be used when we plug
-//everyauth into express so it has the proper routes (like /auth/shopify)
-var apiKey = process.env.SHOPIFY_APIKEY
-  ,secret = process.env.SHOPIFY_SECRET
-  ;
-
-everyauth.everymodule
-  .findUserById( function (req, id, callback) {
-    console.log('-> findUserById');
-    callback(null, req.session.auth);
-  }
-);
-
-everyauth
-  .shopify
-    .appId(apiKey)
-    .appSecret(secret)
-    .scope('write_products')
-    .findOrCreateUser( function (sess, accessToken, accessSecret, shopifyUser) {
-      console.log(shopifyUser);
-      return shopifyUser;
-    })
-    .redirectPath("/finalize");
 
 app.use(express.static(__dirname+'/public'));
 app.use(express.bodyParser());
