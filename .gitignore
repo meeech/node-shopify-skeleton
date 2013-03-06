@@ -2,3 +2,4 @@
 node_modules
 .monitor
 env.js
+*.sublime-*

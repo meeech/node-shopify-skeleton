@@ -1,1 +1,4 @@
-* click action
+* Everyauth User Object - Feels like I'm doing something wrong.
+	- everyauth.shopify.user.user seems off
+	- everyauth docs mention everyauth.user, or even just user being setup for the views as a convenience, but I'm not seeing it
+

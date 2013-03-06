@@ -6,13 +6,13 @@ var express = require('express')
   ,everyauth = require('everyauth')
   ,exphbs  = require('express3-handlebars')
   ,server = require('http').createServer(app)
-  ,port = process.env['PORT'] || 8080
+  ,port = process.env.PORT || 8080
   ;
 
 //Need to set up the everyauth.shopify here, since it will be used when we plug
 //everyauth into express so it has the proper routes (like /auth/shopify)
-var apiKey = process.env['SHOPIFY_APIKEY']
-  ,secret = process.env['SHOPIFY_SECRET']
+var apiKey = process.env.SHOPIFY_APIKEY
+  ,secret = process.env.SHOPIFY_SECRET
   ;
 
 everyauth.everymodule
@@ -33,7 +33,7 @@ everyauth
     })
     .redirectPath("/finalize");
 
-app.use(express['static'](__dirname+'/public'));
+app.use(express.static(__dirname+'/public'));
 app.use(express.bodyParser());
 app.use(express.cookieParser('thisisasecretwheeeeee'));
 app.use(express.session());
@@ -64,6 +64,7 @@ app.get("/", function(req, res){
 
 app.post("/login/authenticate", require('./controllers/shopify').authenticate);
 app.get("/finalize", require('./controllers/shopify').finalize);
+
 
 console.log('-> Listening on', port);
 server.listen(port);
