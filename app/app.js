@@ -40,7 +40,7 @@ app.get("/", function(req, res){
 
 app.get("/welcome", function(req, res){
   if(req.user === undefined) { res.redirect('/'); return; }
-  res.render('welcome', {user: req.user.shopify.user.user});
+  res.render('welcome', {user: req.user.user});
 });
 
 app.post("/login/authenticate", require('./controllers/shopify').authenticate);
