@@ -1,6 +1,8 @@
 require('../env');
 
-var everyauth = require('everyauth');
+var everyauth = require('everyauth')
+  ,db = require('./db.js')
+  ;
 
 var apiKey = process.env.SHOPIFY_APIKEY
   ,secret = process.env.SHOPIFY_SECRET
