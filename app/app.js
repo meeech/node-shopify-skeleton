@@ -62,9 +62,13 @@ app.get("/", function(req, res){
   res.render('home');
 });
 
+app.get("/welcome", function(req, res){
+  if(req.user === undefined) { res.redirect('/'); return; }
+  res.render('welcome', {user: req.user.shopify.user.user});
+});
+
 app.post("/login/authenticate", require('./controllers/shopify').authenticate);
 app.get("/finalize", require('./controllers/shopify').finalize);
-
 
 console.log('-> Listening on', port);
 server.listen(port);

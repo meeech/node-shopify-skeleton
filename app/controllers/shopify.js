@@ -32,7 +32,7 @@ function authenticate(req, res) {
 function finalize(req, res) {
   //Do any checks, etc...
   console.log('-> Finalize');
-  res.redirect('/');
+  res.redirect('/welcome');
 }
 
 exports.authenticate = authenticate;

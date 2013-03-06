@@ -1,6 +1,3 @@
-{{#if everyauth.loggedIn}}
-  <p class="lead text-center">Welcome {{everyauth.shopify.user.user.domain}}</p>
-{{else}}
 <p class="lead text-center">Put in your Shop URL and Go!</p>
 <form id="login" class="form-horizontal text-center" action="/login/authenticate" method="post">
   <div class="input-append">
@@ -8,4 +5,3 @@
       <button type="submit" class="btn btn-success">Go!</button>
   </div>
 </form>
-{{/if}}
