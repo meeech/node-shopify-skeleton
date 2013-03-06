@@ -1,0 +1,18 @@
+{{#if everyauth.shopify.user}}
+Shop: {{everyauth.shopify.user.user.domain}}
+{{/if}}
+<h3>Pick a report to generate</h3>
+Number of products: {{count}}
+<br>
+<a id="hidden" href="/reporter/hidden">Hidden Products</a>
+
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  $('#hidden').click(function(e) {
+    $.getJSON('/reporter/hidden', function(data) {
+      console.log(data);
+    });
+    return false;
+  });
+});
+</script>
