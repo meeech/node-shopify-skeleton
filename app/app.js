@@ -35,12 +35,13 @@ app.configure('development', function(){
 });
 
 app.get("/", function(req, res){
+  if(req.user) { res.redirect('/welcome'); return; }
   res.render('home');
 });
 
 app.get("/welcome", function(req, res){
   if(req.user === undefined) { res.redirect('/'); return; }
-  res.render('welcome', {user: req.user.user});
+  res.render('welcome', {user: req.user});
 });
 
 app.post("/login/authenticate", require('./controllers/shopify').authenticate);
