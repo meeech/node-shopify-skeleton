@@ -19,11 +19,23 @@ app.use(everyauth.middleware(app));
 var hbs = exphbs.create({
   // Specify helpers which are only registered on this instance.
   helpers: {
-      stringify: function (data) { return JSON.stringify(data); }
+      stringify: function (data) { return JSON.stringify(data); },
+      isActive: function(currentUrl, path, alternate) {
+        if(currentUrl == path || currentUrl == alternate) {
+          return "active";
+        }
+        return '';
+      }
   },
   layoutsDir: __dirname+'/views/layouts'
   ,defaultLayout: 'main'
 });
+
+app.use(function(req, res, next){
+  res.locals.url = req.url;
+  next();
+});
+
 
 app.engine('handlebars', hbs.engine);
 app.set('views', __dirname+'/views');
@@ -42,6 +54,10 @@ app.get("/", function(req, res){
 app.get("/welcome", function(req, res){
   if(req.user === undefined) { res.redirect('/'); return; }
   res.render('welcome', {user: req.user});
+});
+
+app.get("/pricing", function(req, res){
+  res.render('pricing');
 });
 
 app.post("/login/authenticate", require('./controllers/shopify').authenticate);
