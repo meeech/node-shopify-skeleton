@@ -3,7 +3,7 @@
 require('../env');
 
 var everyauth = require('everyauth')
-  ,db = require('./db.js')
+  ,db = require('./db/mongo.js')
   ;
 
 var apiKey = process.env.SHOPIFY_APIKEY
