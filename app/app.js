@@ -64,8 +64,8 @@ app.get("/pricing", function(req, res){
 
 app.post("/login/authenticate", require('./controllers/shopify').authenticate);
 app.get("/finalize", require('./controllers/shopify').finalize);
-app.get("/charge/:type(yearly|monthly)", require('./controllers/shopify').charge);
-app.get("/charge/activate", require('./controllers/shopify').activate);
+app.get("/charge/:type(yearly|monthly)", require('./controllers/billing').charge);
+app.get("/charge/activate", require('./controllers/billing').activate);
 
 console.log('-> Listening on', port);
 server.listen(port);
