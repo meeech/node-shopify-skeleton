@@ -2,11 +2,12 @@ require('./env');
 
 /* Express quick setup */
 var express = require('express')
-  ,app = express()
-  ,everyauth = require('./lib/everyauth')
-  ,exphbs  = require('express3-handlebars')
-  ,server = require('http').createServer(app)
-  ,port = process.env.PORT || 8080
+  , app = express()
+  , everyauth = require('./lib/everyauth')
+  , exphbs  = require('express3-handlebars')
+  , flashify = require('flashify')
+  , server = require('http').createServer(app)
+  , port = process.env.PORT || 8080
   ;
 
 app.use(express.static(__dirname+'/public'));
@@ -14,6 +15,7 @@ app.use(express.bodyParser());
 app.use(express.cookieParser('thisisasecretwheeeeee'));
 app.use(express.session());
 app.use(everyauth.middleware(app));
+app.use(flashify);
 
 /* Handlebars setup */
 var hbs = exphbs.create({
@@ -32,6 +34,7 @@ var hbs = exphbs.create({
 });
 
 app.use(function(req, res, next){
+  //Used for making 'active' class in menu
   res.locals.url = req.url;
   next();
 });
