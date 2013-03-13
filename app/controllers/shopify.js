@@ -111,6 +111,7 @@ function activate(req, res) {
       });
 
       client[type].activate({id: charge_id}, function() {
+        req.flash("success", "Thanks for your support!");
         res.redirect('/welcome');
       });
     }
