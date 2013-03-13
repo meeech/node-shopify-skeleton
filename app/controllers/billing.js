@@ -20,7 +20,11 @@ var plans = {
 
 // Handle requests for being billed
 function charge(req, res) {
-  if(req.user === undefined) { res.redirect('/'); return; }
+  if(req.user === undefined) {
+    req.flash("info", "Please login first.");
+    req.session.return_to = req.headers.referer;
+    res.redirect('/'); return;
+  }
   // console.log(req.user);
   var user = req.user
     , plan = plans[req.params.type]

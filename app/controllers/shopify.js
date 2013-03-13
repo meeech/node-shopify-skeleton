@@ -33,7 +33,12 @@ function authenticate(req, res) {
 function finalize(req, res) {
   //Do any checks, etc...
   console.log('-> Finalize');
-  res.redirect('/welcome');
+  var destination = "/welcome";
+  if(req.session.return_to) {
+    destination = req.session.return_to;
+    req.session.return_to = null;
+  }
+  res.redirect(destination);
 }
 
 exports.authenticate = authenticate;
