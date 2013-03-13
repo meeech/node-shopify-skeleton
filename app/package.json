@@ -11,7 +11,8 @@
       "express3-handlebars": "0.3.x",
       "yui": "3.8.1",
       "everyauth": "git://github.com/meeech/everyauth.git#patch-issue-387",
-      "node-shopify": "git://github.com/meeech/node-shopify.git"
+      "node-shopify": "git://github.com/meeech/node-shopify.git",
+      "flashify": "git://github.com/meeech/flashify.git#make-flash-object"
   },
   "repository": "",
   "author": "Mitchell Amihod",
