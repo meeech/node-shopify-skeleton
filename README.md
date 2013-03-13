@@ -12,6 +12,7 @@ Right now, not to much - it's in the building it phase.
 * mongodb
 * node-shopify api i'm trying. Just has Billing & Product atm
 * bootstrap
+* flashify
 
 ##Notes / Things to customize
 * app.js
