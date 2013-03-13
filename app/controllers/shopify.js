@@ -1,5 +1,3 @@
-require('../env');
-
 var everyauth = require('everyauth')
   ,Lang = require('yui').use().Lang
   ,development = (process.env.NODE_ENV == 'development') ? true : false

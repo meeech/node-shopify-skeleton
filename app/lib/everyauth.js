@@ -1,7 +1,5 @@
 // everyauth setup for app
 // See everyauth docs for explanations how to configure things (if you don't want to use my setup)
-require('../env');
-
 var everyauth = require('everyauth')
   ,db = require('./db/mongo.js')
   ;
