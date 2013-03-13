@@ -115,6 +115,7 @@ function activate(req, res) {
       });
     }
     else {
+      req.flash("info", "You declined. That's ok, I'll be here if you change your mind.");
       res.redirect('/welcome');
     }
   });
