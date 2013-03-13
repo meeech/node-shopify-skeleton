@@ -36,7 +36,6 @@ app.use(function(req, res, next){
   next();
 });
 
-
 app.engine('handlebars', hbs.engine);
 app.set('views', __dirname+'/views');
 app.set('view engine', 'handlebars');
@@ -62,6 +61,8 @@ app.get("/pricing", function(req, res){
 
 app.post("/login/authenticate", require('./controllers/shopify').authenticate);
 app.get("/finalize", require('./controllers/shopify').finalize);
+app.get("/charge/:type(yearly|monthly)", require('./controllers/shopify').charge);
+app.get("/charge/activate", require('./controllers/shopify').activate);
 
 console.log('-> Listening on', port);
 server.listen(port);
