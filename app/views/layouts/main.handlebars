@@ -110,6 +110,16 @@
 
       <!-- Begin page content -->
       <div class="container">
+
+        {{#each flash}}
+          {{#each this}}
+            <div class="alert alert-{{@key}}">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+               {{this}}
+            </div>
+          {{/each}}
+        {{/each}}
+
       {{{body}}}
       </div>
 
